@@ -23,11 +23,16 @@ To prevent Vacuum from making a replicated database read-only, use filtered repl
 Installation
 ------------
 
-Clone this repository and use [CouchApp](http://couchapp.org) to push Vacuum to CouchDB, or replicate [an existing deployment of Vacuum](http://couchdb.gutpassfilter.de/vacuum/), e.g. using curl:
+Clone this repository and use [CouchApp](http://couchapp.org) to push Vacuum to `<your_host>/<your_db>`:
+
+    git clone https://github.com/agrueneberg/Vacuum.git
+    couchapp push Vacuum/ http://<your_host>/<your_db>
+
+Alternatively, replicate [an existing deployment of Vacuum](https://couchdb.gutpassfilter.de/vacuum/) to `<your_host>/<your_db>` using `curl`:
 
     curl\
       -X POST\
       -H "Content-Type:application/json"\
-      -d "{\"source\":\"http://couchdb.gutpassfilter.de/vacuum\",\
-           \"target\":\"http://localhost:5984/<your_db>\"}"\
+      -d "{\"source\":\"https://couchdb.gutpassfilter.de/vacuum\",\
+           \"target\":\"http://<your_host>/<your_db>\"}"\
       http://localhost:5984/_replicate
